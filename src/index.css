@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Monument';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/MonumentExtended-Regular.otf') format("opentype"); /* IE9 Compat Modes */
+}
+
+body {
+  margin: 0;
+  font-family: "Monument",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
