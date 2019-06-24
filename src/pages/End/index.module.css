@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.playNow{
+    color: #141414;
+    font-size: 32px;
+}
+
+.playNow::after{
+    background: #141414;
+}
+
+.interactions{
+    font-size: 32px;
+}
+
+.textCTA{
+    font-size: 32px;
+}

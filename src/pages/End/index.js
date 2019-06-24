@@ -36,15 +36,11 @@ export default class Experience extends Component {
     return (
       <div className={css.container}>
         <div>
-          <AnimatedText>I just need to transmit.emotions with technology.Here is some of them</AnimatedText>
+          <AnimatedText>Now, you can listen.To the music we’ve made together.I’m exited, it’s our first project together.Maybe we can.create something else</AnimatedText>
         </div>
-        <InfiniteSkills />
         <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.textCTA}>
         With some simple things<br />
         We can
-          <button onClick={this.nextPage.bind(this)} className={css.playNow}>
-            construct projects
-          </button>
         </div>
       </div>
     )
