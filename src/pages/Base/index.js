@@ -8,7 +8,9 @@ export default class Experience extends Component {
     super(props)
 
     this.state = {
-      textEnded: false
+      textEnded: false,
+      displayCTA: false,
+      titleOpacity: 0
     }
 
     this.textEndHandler = this.onTextEnd.bind(this)
@@ -16,29 +18,57 @@ export default class Experience extends Component {
     window.addEventListener('text:ended', this.textEndHandler)
   }
 
+  componentDidMount() {
+    this.setState({
+      titleOpacity: 1
+    })
+
+    setTimeout(() => {
+      this.setState({
+        titleOpacity: 0
+      })
+    }, 3000)
+  }
+
   componentWillUnmount() {
     window.removeEventListener('text:ended', this.textEndHandler)
   }
 
   onTextEnd() {
-    this.setState({
-      textEnded: true
-    })
+    setTimeout(() => {
+      this.setState({
+        textEnded: true
+      })
+    }, 200)
+
+    setTimeout(() => {
+      this.setState({
+        displayCTA: true
+      })
+    }, 2000)
   }
 
   nextPage() {
     var event = new Event('page:next')
     window.dispatchEvent(event)
+
+    var soundEvent = new Event('sound:next')
+    window.dispatchEvent(soundEvent)
   }
 
   render() {
     return (
       <div className={css.container}>
-        <div>
-          <AnimatedText>Hello.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
-          <div className={css.interactions}>Photography, music, programmation & computer graphics</div>
+        <div style={{ opacity: this.state.titleOpacity }} className={css.title}>
+          1 - The Base
         </div>
-        <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.textCTA}>
+        <div>
+          <AnimatedText delay={3500}>Hello.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
+          <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
+            Photography, music, programmation & computer graphics
+          </div>
+        </div>
+        <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>
           Now we have the basics <br />
           We should
           <button onClick={this.nextPage.bind(this)} className={css.playNow}>

@@ -29,15 +29,23 @@ export default class Experience extends Component {
   nextPage() {
     var event = new Event('page:next')
     window.dispatchEvent(event)
+
+    var soundEvent = new Event('sound:start')
+    window.dispatchEvent(soundEvent)
   }
 
   render() {
     return (
       <div className={css.container}>
-        <AnimatedText>I think that.Humans are like music.Both Music & Humans.Are based on simple melody.We are going to create it together</AnimatedText>
-        <button style={{ opacity: this.state.textEnded ? 1 : 0 }} onClick={this.nextPage.bind(this)} className={css.playNow}>
-          Let's create it
-        </button>
+        <AnimatedText>
+          I think that.Humans are like music.Both Music & Humans.Can be described as multiples layers.We are going to discover it together
+        </AnimatedText>
+        <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.cta}>
+          <button onClick={this.nextPage.bind(this)} className={css.playNow}>
+            Let's create our music
+          </button>
+          <p>(You should use your headphones)</p>
+        </div>
       </div>
     )
   }

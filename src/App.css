@@ -23,14 +23,15 @@
   color: #61dafb;
 }
 
-button{
+button, a{
   outline: none;
   background: none;
   border: none;
-  font-family: 'Monument'
+  font-family: 'Monument';
+  text-decoration: none;
 }
 
-button{
+button, a{
   color: #fff;
   font-size: 25px;
   text-align: left;
@@ -43,7 +44,7 @@ ul{
   padding: 0;
 }
 
-button::after{
+button::after, a::after{
   content: '';
   background: #fff;
   position: absolute;
@@ -58,7 +59,7 @@ li{
   list-style: none;
 }
 
-button:hover::after{
+button:hover::after, a:hover::after{
   transform: translate(104%, 0)
 }
 

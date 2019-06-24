@@ -9,7 +9,9 @@ export default class Experience extends Component {
     super(props)
 
     this.state = {
-      textEnded: false
+      textEnded: false,
+      displayCTA: false,
+      titleOpacity: 0
     }
 
     this.textEndHandler = this.onTextEnd.bind(this)
@@ -22,26 +24,55 @@ export default class Experience extends Component {
   }
 
   onTextEnd() {
-    this.setState({
-      textEnded: true
-    })
+    setTimeout(() => {
+      this.setState({
+        textEnded: true
+      })
+    }, 200)
+
+    setTimeout(() => {
+      this.setState({
+        displayCTA: true
+      })
+    }, 2000)
   }
 
   nextPage() {
     var event = new Event('page:next')
     window.dispatchEvent(event)
+
+    var soundEvent = new Event('sound:next')
+    window.dispatchEvent(soundEvent)
+  }
+
+  componentDidMount() {
+    this.setState({
+      titleOpacity: 1
+    })
+
+    setTimeout(() => {
+      this.setState({
+        titleOpacity: 0
+      })
+    }, 3000)
   }
 
   render() {
     return (
       <div className={css.container}>
-        <div>
-          <AnimatedText>I just need to transmit.emotions with technology.Here is some of them</AnimatedText>
+        <div style={{ opacity: this.state.titleOpacity }} className={css.title}>
+          2 - Let's go deeper
         </div>
-        <InfiniteSkills />
-        <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.textCTA}>
-        With some simple things<br />
-        We can
+        <div>
+          <AnimatedText delay={3500}>I just need to transmit.emotions with technology.Here is some of them</AnimatedText>
+        </div>
+        <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.infinite}>
+          <InfiniteSkills />
+        </div>
+        <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>
+          With some simple things
+          <br />
+          We can
           <button onClick={this.nextPage.bind(this)} className={css.playNow}>
             construct projects
           </button>

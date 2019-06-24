@@ -12,6 +12,16 @@
     font-size: 32px;
 }
 
+.link{
+    color: #141414;
+    font-size: 32px;
+    overflow: hidden;
+}
+
+.link::after{
+    background: #141414;
+}
+
 .playNow::after{
     background: #141414;
 }
@@ -22,4 +32,17 @@
 
 .textCTA{
     font-size: 32px;
+}
+
+.title{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all .6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
 }

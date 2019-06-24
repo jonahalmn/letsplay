@@ -18,8 +18,23 @@
 
 .interactions{
     font-size: 32px;
+    transition: all .3s;
 }
 
 .textCTA{
     font-size: 32px;
+    transition: all .3s;
+}
+
+.title{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all .6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
 }

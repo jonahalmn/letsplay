@@ -12,12 +12,15 @@ export default class AnimatedText extends Component {
     this.currentText = ''
     this.isPerforming = true
 
+    this.delay = 0
+
     this.state = {
       currentStep: 0
     }
   }
 
   componentDidMount() {
+    this.delay = this.props.delay > 0 ? this.props.delay : 0
     RAF.add('animatedText', this.update.bind(this))
   }
 
@@ -28,7 +31,7 @@ export default class AnimatedText extends Component {
   update() {
     this.time++
 
-    if (this.time % 5 === 0 && this.string[this.state.currentStep]) {
+    if ((this.time / 60) * 1000 > this.delay && this.time % 5 === 0 && this.string[this.state.currentStep]) {
       if (this.string[this.state.currentStep] === '.') {
         this.currentText += '<br />'
       } else {
