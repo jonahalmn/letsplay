@@ -10,6 +10,12 @@ export default class Router extends Component {
     this.state = {
       currentPage: pages[0]
     }
+
+    this.listen()
+  }
+
+  listen() {
+    window.addEventListener('page:next', this.nextPage.bind(this))
   }
 
   componentDidMount() {
