@@ -1,0 +1,8 @@
+.container{
+    height: calc(100% - 40px);
+    width: calc(100% - 40px);
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

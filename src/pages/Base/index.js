@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import css from './index.module.css'
 import RAF from '../../core/raf'
-
 import AnimatedText from '../../components/AnimatedText'
+import css from './index.module.css'
 
-export default class Home extends Component {
+export default class Experience extends Component {
   constructor(props) {
     super(props)
 
@@ -32,17 +31,18 @@ export default class Home extends Component {
     window.dispatchEvent(event)
   }
 
-  update() {}
-
   render() {
     return (
       <div className={css.container}>
         <div>
-          <h1>
-            <AnimatedText>I think.We could make a project together</AnimatedText>
-          </h1>
-          <button style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.play} onClick={this.nextPage.bind(this)}>
-            Start our first project
+          <AnimatedText>Hello.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
+          <div className={css.interactions}>Photography, music, programmation & computer graphics</div>
+        </div>
+        <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.textCTA}>
+          Now we have the basics <br />
+          We should
+          <button onClick={this.nextPage.bind(this)} className={css.playNow}>
+            add depth
           </button>
         </div>
       </div>

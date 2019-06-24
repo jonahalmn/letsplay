@@ -1,0 +1,12 @@
+.text::after{
+    content: '';
+    background: #fff;
+    height: 32px;
+    width: 10px;
+    position: absolute;
+}
+
+.text{
+    position: relative;
+    margin-bottom: 0;
+}

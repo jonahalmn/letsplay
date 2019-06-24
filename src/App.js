@@ -16,10 +16,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="masterApp">
         <div className="frame" />
         <Router ref={this.router} />
-        <button onClick={this.nextPage.bind(this)}>Next</button>
+        {/* <button onClick={this.nextPage.bind(this)}>Next</button> */}
       </div>
     )
   }
