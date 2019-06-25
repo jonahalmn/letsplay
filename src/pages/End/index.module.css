@@ -16,6 +16,7 @@
     color: #141414;
     font-size: 32px;
     overflow: hidden;
+    display: inline-block;
 }
 
 .link::after{

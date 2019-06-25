@@ -87,3 +87,13 @@ p{
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 600px){
+  p, div, h1{
+    font-size: 18px!important;
+  }
+
+  a, button{
+    font-size: 18px!important;
+  }
+}
