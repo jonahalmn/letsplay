@@ -1,7 +1,23 @@
 export default [
   { name: 'Nova', url: 'https://nova-exp.fr' },
+  { name: 'Jonah.am', url: 'https://jonah.am' },
   { name: 'WebGL Rose', url: 'https://rose.jonah.am' },
-  { name: 'WebGL Water', url: 'https://water.jonah.am' },
+  { name: 'WebGL Wave', url: 'https://wave.jonah.am' },
+  { name: 'Nova', url: 'https://nova-exp.fr' },
+  { name: 'Jonah.am', url: 'https://jonah.am' },
+  { name: 'Exp for MMP', url: 'https://mmp.jonah.am' },
   { name: 'Mradz.io', url: 'https://mradz.io' },
-  { name: 'Manzi', url: 'https://manzi.surge.sh' }
+  { name: 'WebGL Rose', url: 'https://rose.jonah.am' },
+  { name: 'WebGL Wave', url: 'https://wave.jonah.am' },
+  { name: 'Manzi', url: 'https://manzi.surge.sh' },
+  { name: 'Jonah.am', url: 'https://jonah.am' },
+  { name: 'DMX Project', url: 'https://heenok.surge.sh' },
+  { name: 'Nova', url: 'https://nova-exp.fr' },
+  { name: 'Hermes Concept', url: 'https://hermes3d.surge.sh' },
+  { name: 'Jonah.am', url: 'https://jonah.am' },
+  { name: 'ed_dsg', url: 'https://ed_dsg.herokuapp.com' },
+  { name: 'WebGL Rose', url: 'https://rose.jonah.am' },
+  { name: 'WebGL Wave', url: 'https://wave.jonah.am' },
+  { name: '3D Showroom Test', url: 'https://boring-hamilton-f8890c.netlify.com/' },
+  { name: 'Lovely City', url: 'http://lovely-city.surge.sh/' }
 ]

@@ -25,7 +25,7 @@ export default class InfiniteProjects extends Component {
     console.log(this.state.scroll)
     if (this.refs.list) {
       this.setState({
-        scroll: this.state.scroll + 1
+        scroll: this.state.scroll - 1
       })
     }
   }
