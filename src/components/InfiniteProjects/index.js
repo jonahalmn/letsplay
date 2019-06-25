@@ -49,7 +49,7 @@ export default class InfiniteProjects extends Component {
           {projects.map((project, key) => {
             return (
               <li key={key} className={css.project}>
-                <a className={css.projectLink} target="_blank" href={project.url}>
+                <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
               </li>
@@ -58,7 +58,7 @@ export default class InfiniteProjects extends Component {
           {projects.map((project, key) => {
             return (
               <li key={key} className={css.project}>
-                <a className={css.projectLink} target="_blank" href={project.url}>
+                <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
               </li>
@@ -67,7 +67,7 @@ export default class InfiniteProjects extends Component {
           {projects.map((project, key) => {
             return (
               <li key={key} className={css.project}>
-                <a className={css.projectLink} target="_blank" href={project.url}>
+                <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
               </li>

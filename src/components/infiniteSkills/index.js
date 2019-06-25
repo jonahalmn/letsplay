@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import skills from '../../data/skills.js'
 import css from './index.module.css'
+import { TweenLite } from 'gsap'
 
 import RAF from '../../core/raf'
 
@@ -12,7 +13,16 @@ export default class InfiniteSkills extends Component {
       strings: [],
       scroll: [0, 0, 0]
     }
+    this.speed = 10
     this.strings = []
+
+    this.textEndHandler = this.onTextEnd.bind(this)
+
+    window.addEventListener('text:ended', this.textEndHandler)
+  }
+
+  onTextEnd() {
+    TweenLite.to(this, 4, { speed: 1 })
   }
 
   componentDidMount() {
@@ -22,15 +32,16 @@ export default class InfiniteSkills extends Component {
 
   componentWillUnmount() {
     RAF.remove('infinite')
+    window.removeEventListener('text:ended', this.textEndHandler)
   }
 
   update() {
     if (this.refs.skillsdiv0) {
       this.setState({
         scroll: [
-          ((this.state.scroll[0] + 1) % this.refs.skillsdiv0.offsetWidth) - this.refs.skillsdiv0.offsetWidth,
-          ((this.state.scroll[1] - 1) % this.refs.skillsdiv1.offsetWidth) - this.refs.skillsdiv1.offsetWidth,
-          ((this.state.scroll[2] + 1) % this.refs.skillsdiv2.offsetWidth) - this.refs.skillsdiv2.offsetWidth
+          ((this.state.scroll[0] + this.speed) % this.refs.skillsdiv0.offsetWidth) - this.refs.skillsdiv0.offsetWidth,
+          ((this.state.scroll[1] - this.speed) % this.refs.skillsdiv1.offsetWidth) - this.refs.skillsdiv1.offsetWidth,
+          ((this.state.scroll[2] + this.speed) % this.refs.skillsdiv2.offsetWidth) - this.refs.skillsdiv2.offsetWidth
         ]
       })
     }
