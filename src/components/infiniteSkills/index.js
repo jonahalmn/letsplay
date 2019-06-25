@@ -26,17 +26,14 @@ export default class InfiniteSkills extends Component {
 
   update() {
     if (this.refs.skillsdiv0) {
-      console.log(this.refs.skillsdiv0.offsetWidth)
-      console.log(((this.state.scroll[0] + 1) % (this.refs.skillsdiv0.offsetWidth)))
-    
-    this.setState({
-      scroll: [
-        ((this.state.scroll[0] + 1) % (this.refs.skillsdiv0.offsetWidth)) - (this.refs.skillsdiv0.offsetWidth),
-        ((this.state.scroll[1] - 1) % (this.refs.skillsdiv1.offsetWidth)) - (this.refs.skillsdiv1.offsetWidth),
-        ((this.state.scroll[2] + 1) % (this.refs.skillsdiv2.offsetWidth)) - (this.refs.skillsdiv2.offsetWidth),
-      ]
-    })
-  }
+      this.setState({
+        scroll: [
+          ((this.state.scroll[0] + 1) % this.refs.skillsdiv0.offsetWidth) - this.refs.skillsdiv0.offsetWidth,
+          ((this.state.scroll[1] - 1) % this.refs.skillsdiv1.offsetWidth) - this.refs.skillsdiv1.offsetWidth,
+          ((this.state.scroll[2] + 1) % this.refs.skillsdiv2.offsetWidth) - this.refs.skillsdiv2.offsetWidth
+        ]
+      })
+    }
   }
 
   setTextes() {
@@ -69,9 +66,7 @@ export default class InfiniteSkills extends Component {
                   {string}
                 </div>
                 <div style={{ transform: `translate(${scroll}px, 0px)` }}>{string}</div>
-                <div style={{ transform: `translate(${scroll}px, 0px)` }}>
-                  {string}
-                </div>
+                <div style={{ transform: `translate(${scroll}px, 0px)` }}>{string}</div>
                 <div style={{ transform: `translate(${scroll}px, 0px)` }}>{string}</div>
               </li>
             )

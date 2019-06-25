@@ -63,7 +63,7 @@ export default class Experience extends Component {
           1 - The Base
         </div>
         <div>
-          <AnimatedText delay={3500}>Hello.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
+          <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
           <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
             Photography, music, programmation & computer graphics
           </div>

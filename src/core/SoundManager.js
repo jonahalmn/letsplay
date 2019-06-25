@@ -3,6 +3,10 @@ import intro from '../assets/sounds/intro.webm'
 import depth from '../assets/sounds/depth.webm'
 import end from '../assets/sounds/end.webm'
 
+import intro_mp3 from '../assets/sounds/intro.mp3'
+import depth_mp3 from '../assets/sounds/depth.mp3'
+import end_mp3 from '../assets/sounds/end.mp3'
+
 class SoundManager {
   constructor() {
     this.currentSound = 0
@@ -24,17 +28,17 @@ class SoundManager {
   setSounds() {
     this.sounds = [
       new Howl({
-        src: [intro],
+        src: [intro, intro_mp3],
         loop: true,
         onend: this.onLoop.bind(this)
       }),
       new Howl({
-        src: [depth],
+        src: [depth, depth_mp3],
         loop: true,
         onend: this.onLoop.bind(this)
       }),
       new Howl({
-        src: [end],
+        src: [end, end_mp3],
         loop: false,
         onend: this.onLoop.bind(this)
       })

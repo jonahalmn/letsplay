@@ -22,21 +22,25 @@ export default class InfiniteProjects extends Component {
   }
 
   update() {
-    // if (this.refs.list) {
-    //   this.setState({
-    //     scroll: ((this.state.scroll + 1) % this.refs.list.offsetWidth) - this.refs.list.offsetWidth
-    //   })
-    // }
+    console.log(this.state.scroll)
+    if (this.refs.list) {
+      this.setState({
+        scroll: this.state.scroll + 1
+      })
+    }
   }
 
   render() {
+    const scroll = this.refs.list ? (this.state.scroll % (this.refs.list.offsetWidth / 2)) - this.refs.list.offsetWidth / 2 : 0
+
     return (
       <div className={css.container}>
-        <ul style={{ transform: `translate(${this.state.scroll}px, 0px)` }} ref="list" className={css.projectList}>
+        <h1>For now, you can look 👀 at some of my projects</h1>
+        <ul style={{ transform: `translate(${scroll}px, 0px)` }} ref="list" className={css.projectList}>
           {projects.map((project, key) => {
             return (
               <li key={key} className={css.project}>
-                <a className={css.projectLink} target="_blank" href={project.url}>
+                <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
               </li>
