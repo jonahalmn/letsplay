@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RAF from '../../core/raf'
 import AnimatedText from '../../components/AnimatedText'
+import HoverableText from '../../components/HoverableText'
 import css from './index.module.css'
 
 export default class Experience extends Component {
@@ -65,7 +66,7 @@ export default class Experience extends Component {
         <div>
           <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
           <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
-            Photography, music, programmation & computer graphics
+            <HoverableText imageKey="photo">Photography</HoverableText> , music, programmation & <HoverableText imageKey="cg">computer graphics</HoverableText>
           </div>
         </div>
         <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>

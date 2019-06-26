@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 import Router from './core/Router'
 import SoundManager from './core/SoundManager'
+import Background from './components/Background'
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
     return (
       <div className="masterApp">
         <div className="frame" />
+        <Background />
         <Router ref={this.router} />
         {/* <button onClick={this.nextPage.bind(this)}>Next</button> */}
       </div>

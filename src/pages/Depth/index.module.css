@@ -39,4 +39,5 @@
     align-items: center;
     justify-content: center;
     font-size: 60px;
+    pointer-events: none;
 }
