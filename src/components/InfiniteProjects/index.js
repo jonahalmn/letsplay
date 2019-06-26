@@ -22,7 +22,6 @@ export default class InfiniteProjects extends Component {
   }
 
   update() {
-    console.log(this.state.scroll)
     if (this.refs.list) {
       this.setState({
         scroll: this.state.scroll - 1
@@ -43,6 +42,7 @@ export default class InfiniteProjects extends Component {
                 <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
+                <p className={css.skillUsed}>{project.skills}</p>
               </li>
             )
           })}
@@ -52,6 +52,7 @@ export default class InfiniteProjects extends Component {
                 <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
+                <p className={css.skillUsed}>{project.skills}</p>
               </li>
             )
           })}
@@ -61,6 +62,7 @@ export default class InfiniteProjects extends Component {
                 <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
+                <p className={css.skillUsed}>{project.skills}</p>
               </li>
             )
           })}
@@ -70,6 +72,7 @@ export default class InfiniteProjects extends Component {
                 <a rel="noopener noreferrer" className={css.projectLink} target="_blank" href={project.url}>
                   {project.name}
                 </a>
+                <p className={css.skillUsed}>{project.skills}</p>
               </li>
             )
           })}

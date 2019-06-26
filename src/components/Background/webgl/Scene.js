@@ -1,14 +1,21 @@
 import v_shader from './glsl/index.vert'
 import f_shader from './glsl/index.frag'
 
-import image from '../../../assets/images/cgbig.jpg'
-import photo from '../../../assets/images/image2.jpg'
+import cg from '../../../assets/images/cgraph.jpg'
+import code from '../../../assets/images/code.jpg'
+import music from '../../../assets/images/music.jpg'
+import photo from '../../../assets/images/photo.jpg'
 
 import RAF from '../../../core/raf'
 
 import { TweenLite, Power4 } from 'gsap'
 
-let images = [{ key: 'cg', url: image, scale: 2 }, { key: 'photo', url: photo, scale: 1 }]
+let images = [
+  { key: 'code', url: code, scale: 1 },
+  { key: 'music', url: music, scale: 1 },
+  { key: 'cg', url: cg, scale: 3.5 },
+  { key: 'photo', url: photo, scale: 1.5 }
+]
 
 export default class Scene {
   constructor() {
@@ -38,6 +45,7 @@ export default class Scene {
     this.imageOpacityUniformLoc = this.gl.getUniformLocation(this.program, 'u_imageOpacity')
     this.transitionUniformLoc = this.gl.getUniformLocation(this.program, 'u_transition')
     this.transitionOpacityUniformLoc = this.gl.getUniformLocation(this.program, 'u_transitionOpacity')
+    this.speedUniformLocation = this.gl.getUniformLocation(this.program, 'u_speed')
 
     this.sendPositionData()
     this.imageFormats = {}
@@ -50,6 +58,7 @@ export default class Scene {
     this.time = 0
     this.scale = 2
     this.imageOpacity = 0
+    this.speed = 0
 
     this.transition = 0
     this.transitionOpacity = 0
@@ -112,19 +121,20 @@ export default class Scene {
     switch (e.step) {
       case 0:
         TweenLite.to(this, 0.2, { transitionOpacity: 1 })
+        setTimeout(() => {
+          TweenLite.to(this, 0.4, { transitionOpacity: 0 })
+        }, 2950)
         break
       case 1:
         TweenLite.to(this, 0.2, { transitionOpacity: 1 })
-        TweenLite.to(this, 1, { ease: Power4.easeOut, transition: 1, delay: 1 })
+        TweenLite.to(this, 1, { ease: Power4.easeOut, transition: 1, speed: 2, delay: 1 })
+        setTimeout(() => {
+          TweenLite.to(this, 0.4, { transitionOpacity: 0 })
+        }, 5000)
         break
       default:
-        console.log('default b')
         break
     }
-
-    setTimeout(() => {
-      TweenLite.to(this, 0.2, { transitionOpacity: 0 })
-    }, 2950)
   }
 
   createQuadData() {
@@ -242,6 +252,7 @@ export default class Scene {
 
     this.gl.uniform1f(this.transitionOpacityUniformLoc, this.transitionOpacity)
     this.gl.uniform1f(this.transitionUniformLoc, this.transition)
+    this.gl.uniform1f(this.speedUniformLocation, this.speed)
 
     this.gl.drawArrays(this.gl.TRIANGLES, 0, 6)
   }

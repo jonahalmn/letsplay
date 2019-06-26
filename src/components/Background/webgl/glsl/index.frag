@@ -9,6 +9,7 @@ uniform float u_imageOpacity;
 
 uniform float u_transition;
 uniform float u_transitionOpacity;
+uniform float u_speed;
 
 varying vec2 v_position;
 
@@ -24,14 +25,13 @@ float frame(vec2 position, float size, float thin){
 
 vec4 transition(vec2 pos, float completion){
     vec4 color = vec4(0.);
-    color.rgb -= frame(pos - .15, .7, .02);
-    color.a += frame(pos - .15, .7, .02);
 
-        for(float i=1.;i<4.;i++){
+    for(float i=0.;i<6.;i++){
         vec4 colorTmp = vec4(0.);
         float tmpI = i * u_transition;
-        colorTmp.rgb -= (frame(pos - (1. - (.7 -tmpI * .1))/2., .7 -tmpI * .1, .02 -tmpI*.003) -tmpI*.09);
-        colorTmp.a += frame(pos - (1. - (.7 -tmpI * .1))/2., .7 -tmpI * .1, .02 -tmpI*.003);
+        float scale = (.7 -tmpI * .2) + mod( (mod(u_time, 100000.) / 500.) * u_speed, .6);
+        colorTmp.rgb -= (frame((pos - (1. - scale)/2.), scale, .02 * scale));
+        colorTmp.a += frame((pos - (1. - scale)/2.) , scale, .02 * scale);
         color+=colorTmp
     }
 

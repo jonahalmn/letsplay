@@ -57,7 +57,6 @@ export default class InfiniteSkills extends Component {
       strings.push(string)
     })
 
-    console.log('strings', strings)
     this.setState({
       strings: strings
     })

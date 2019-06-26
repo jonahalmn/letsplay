@@ -7,14 +7,12 @@ export default class HoverableText extends Component {
   }
 
   emitEnter() {
-    console.log('enter')
     var event = new Event('image:see')
     event.imageKey = this.props.imageKey
     window.dispatchEvent(event)
   }
 
   emitLeave() {
-    console.log('enter')
     var event = new Event('image:hide')
     window.dispatchEvent(event)
   }

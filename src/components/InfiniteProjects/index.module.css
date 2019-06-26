@@ -5,6 +5,9 @@
 .project{
     white-space: nowrap;
     font-size: 80px;
+    color: #141414;
+    display: flex;
+    flex-direction: column;
 }
 
 .projectList{
@@ -14,5 +17,11 @@
 .projectLink{
     color: #141414;
     font-size: 80px;
+    margin-left: 180px;
+}
+
+.skillUsed{
+    margin: 0;
+    font-size: 20px;
     margin-left: 180px;
 }

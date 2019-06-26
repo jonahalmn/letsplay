@@ -17,6 +17,10 @@ export default class AnimatedText extends Component {
     this.state = {
       currentStep: 0
     }
+
+    this.clickHandler = this.onClick.bind(this)
+
+    window.addEventListener('click', this.clickHandler)
   }
 
   componentDidMount() {
@@ -25,7 +29,23 @@ export default class AnimatedText extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('click', this.clickHandler)
     RAF.remove('animatedText')
+  }
+
+  onClick() {
+    for (let i = 0; i < 20; i++) {
+      if (this.isPerforming === true && (this.time / 60) * 1000 > this.delay && this.string[this.state.currentStep]) {
+        if (this.string[this.state.currentStep] === '.') {
+          this.currentText += '<br />'
+        } else {
+          this.currentText += this.string[this.state.currentStep]
+        }
+        this.setState({
+          currentStep: this.state.currentStep + 1
+        })
+      }
+    }
   }
 
   update() {

@@ -36,7 +36,7 @@ export default class Experience extends Component {
       this.setState({
         titleOpacity: 0
       })
-    }, 3300)
+    }, 3500)
   }
 
   componentWillUnmount() {
@@ -74,10 +74,10 @@ export default class Experience extends Component {
           1 - The Base
         </div>
         <div>
-          <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
+          <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22 years old.I'm really in love with</AnimatedText>
           <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
-            <HoverableText imageKey="photo">Photography</HoverableText> , <HoverableText imageKey="cg">music</HoverableText>,{' '}
-            <HoverableText imageKey="cg">programmation</HoverableText> & <HoverableText imageKey="cg">computer graphics</HoverableText>
+            <HoverableText imageKey="photo">Photography</HoverableText> , <HoverableText imageKey="music">music</HoverableText>,{' '}
+            <HoverableText imageKey="code">programmation</HoverableText> & <HoverableText imageKey="cg">computer graphics</HoverableText>
           </div>
         </div>
         <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>

@@ -63,7 +63,7 @@ export default class Experience extends Component {
       this.setState({
         titleOpacity: 0
       })
-    }, 3300)
+    }, 5500)
   }
 
   render() {
@@ -73,7 +73,7 @@ export default class Experience extends Component {
           2 - Let's go deeper
         </div>
         <div>
-          <AnimatedText delay={3500}>I just need to transmit.emotions with technology.Here is some of them</AnimatedText>
+          <AnimatedText delay={5500}>I just need to transmit.emotions with technologies.Here are some of them</AnimatedText>
         </div>
         <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.infinite}>
           <InfiniteSkills />
