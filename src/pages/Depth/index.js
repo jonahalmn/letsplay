@@ -73,13 +73,13 @@ export default class Experience extends Component {
           2 - Let's go deeper
         </div>
         <div>
-          <AnimatedText delay={5500}>I just need to transmit.emotions with technologies.Here are some of them</AnimatedText>
+          <AnimatedText delay={5500}>My only need is to transmit.emotions with technologies.Here are some of them</AnimatedText>
         </div>
         <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.infinite}>
           <InfiniteSkills />
         </div>
         <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>
-          With some simple things
+          With simple things
           <br />
           We can
           <button onClick={this.nextPage.bind(this)} className={css.playNow}>
