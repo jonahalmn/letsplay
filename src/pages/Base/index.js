@@ -76,8 +76,8 @@ export default class Experience extends Component {
         <div>
           <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
           <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
-            <HoverableText imageKey="photo">Photography</HoverableText> , <HoverableText imageKey="cg">music</HoverableText>,
-            <HoverableText imageKey="cg">programmation</HoverableText> & <HoverableText imageKey="cg">computer graphics</HoverableText>, try to hover them!
+            <HoverableText imageKey="photo">Photography</HoverableText> , <HoverableText imageKey="cg">music</HoverableText>,{' '}
+            <HoverableText imageKey="cg">programmation</HoverableText> & <HoverableText imageKey="cg">computer graphics</HoverableText>
           </div>
         </div>
         <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>

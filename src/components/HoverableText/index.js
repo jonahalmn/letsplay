@@ -20,6 +20,10 @@ export default class HoverableText extends Component {
   }
 
   render() {
-    return <span ref="target">{this.props.children}</span>
+    return (
+      <span style={{ textDecoration: 'underline' }} ref="target">
+        {this.props.children}
+      </span>
+    )
   }
 }
