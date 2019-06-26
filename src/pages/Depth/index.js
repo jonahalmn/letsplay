@@ -46,15 +46,24 @@ export default class Experience extends Component {
   }
 
   componentDidMount() {
+    var eventG = new Event('gl:start')
+    window.dispatchEvent(eventG)
+
+    var event = new Event('gl:transition')
+    event.step = 1
+    window.dispatchEvent(event)
+
     this.setState({
       titleOpacity: 1
     })
 
     setTimeout(() => {
+      var eventG = new Event('gl:pause')
+      window.dispatchEvent(eventG)
       this.setState({
         titleOpacity: 0
       })
-    }, 3000)
+    }, 3300)
   }
 
   render() {

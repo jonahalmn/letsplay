@@ -37,6 +37,10 @@ export default class Experience extends Component {
   }
 
   componentDidMount() {
+    var event = new Event('gl:transition')
+    event.step = 2
+    window.dispatchEvent(event)
+
     this.setState({
       titleOpacity: 1
     })

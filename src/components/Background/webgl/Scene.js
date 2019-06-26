@@ -6,6 +6,8 @@ import photo from '../../../assets/images/image2.jpg'
 
 import RAF from '../../../core/raf'
 
+import { TweenLite, Power4 } from 'gsap'
+
 let images = [{ key: 'cg', url: image, scale: 2 }, { key: 'photo', url: photo, scale: 1 }]
 
 export default class Scene {
@@ -34,6 +36,8 @@ export default class Scene {
     this.mouseUniformLoc = this.gl.getUniformLocation(this.program, 'u_mouseN')
     this.timeUniformLoc = this.gl.getUniformLocation(this.program, 'u_time')
     this.imageOpacityUniformLoc = this.gl.getUniformLocation(this.program, 'u_imageOpacity')
+    this.transitionUniformLoc = this.gl.getUniformLocation(this.program, 'u_transition')
+    this.transitionOpacityUniformLoc = this.gl.getUniformLocation(this.program, 'u_transitionOpacity')
 
     this.sendPositionData()
     this.imageFormats = {}
@@ -47,9 +51,10 @@ export default class Scene {
     this.scale = 2
     this.imageOpacity = 0
 
-    this.listen()
+    this.transition = 0
+    this.transitionOpacity = 0
 
-    RAF.add('webgl', this.draw.bind(this))
+    this.listen()
   }
 
   createTextures() {
@@ -61,13 +66,25 @@ export default class Scene {
     this.texture = this.textures.cg.glTexture
   }
 
+  start() {
+    RAF.add('webgl', this.draw.bind(this))
+  }
+
+  pause() {
+    RAF.remove('webgl')
+  }
+
   listen() {
     this.mouseMoveHandler = this.onMouseMove.bind(this)
     this.imageChangeHandler = this.onImageChange.bind(this)
     this.imageQuitHandler = this.onImageQuit.bind(this)
+    this.transitionHandler = this.onTransition.bind(this)
     window.addEventListener('mousemove', this.mouseMoveHandler)
     window.addEventListener('image:see', this.imageChangeHandler)
     window.addEventListener('image:hide', this.imageQuitHandler)
+    window.addEventListener('gl:transition', this.transitionHandler)
+    window.addEventListener('gl:pause', this.pause.bind(this))
+    window.addEventListener('gl:start', this.start.bind(this))
   }
 
   unlisten() {
@@ -78,16 +95,36 @@ export default class Scene {
     this.texture = this.textures[e.imageKey].glTexture
     this.scale = this.textures[e.imageKey].scale
     this.imageFormat = this.imageFormats[e.imageKey]
-    this.imageOpacity = 1
+    TweenLite.to(this, 0.2, { imageOpacity: 1 })
+    //this.imageOpacity = 1
   }
 
   onImageQuit() {
-    this.imageOpacity = 0
+    TweenLite.to(this, 0.2, { imageOpacity: 0 })
   }
 
   onMouseMove(e) {
     this.mousePosition.x = e.clientX
     this.mousePosition.y = e.clientY
+  }
+
+  onTransition(e) {
+    switch (e.step) {
+      case 0:
+        TweenLite.to(this, 0.2, { transitionOpacity: 1 })
+        break
+      case 1:
+        TweenLite.to(this, 0.2, { transitionOpacity: 1 })
+        TweenLite.to(this, 1, { ease: Power4.easeOut, transition: 1, delay: 1 })
+        break
+      default:
+        console.log('default b')
+        break
+    }
+
+    setTimeout(() => {
+      TweenLite.to(this, 0.2, { transitionOpacity: 0 })
+    }, 2950)
   }
 
   createQuadData() {
@@ -202,6 +239,9 @@ export default class Scene {
     this.gl.uniform1f(this.scaleModelUniformLoc, this.scale)
     this.gl.uniform1f(this.imageOpacityUniformLoc, this.imageOpacity)
     this.gl.uniform2f(this.mouseUniformLoc, this.mousePosition.x / window.innerWidth, this.mousePosition.y / window.innerHeight)
+
+    this.gl.uniform1f(this.transitionOpacityUniformLoc, this.transitionOpacity)
+    this.gl.uniform1f(this.transitionUniformLoc, this.transition)
 
     this.gl.drawArrays(this.gl.TRIANGLES, 0, 6)
   }

@@ -20,15 +20,23 @@ export default class Experience extends Component {
   }
 
   componentDidMount() {
+    var eventG = new Event('gl:start')
+    window.dispatchEvent(eventG)
+
+    var event = new Event('gl:transition')
+    event.step = 0
+    window.dispatchEvent(event)
     this.setState({
       titleOpacity: 1
     })
 
     setTimeout(() => {
+      var eventG = new Event('gl:pause')
+      window.dispatchEvent(eventG)
       this.setState({
         titleOpacity: 0
       })
-    }, 3000)
+    }, 3300)
   }
 
   componentWillUnmount() {
@@ -36,6 +44,8 @@ export default class Experience extends Component {
   }
 
   onTextEnd() {
+    var eventG = new Event('gl:start')
+    window.dispatchEvent(eventG)
     setTimeout(() => {
       this.setState({
         textEnded: true
@@ -66,7 +76,8 @@ export default class Experience extends Component {
         <div>
           <AnimatedText delay={3500}>Hello 👋.I'm Jonah Alle Monne.I'm french & I'm 22Years Old.I'm really in love with</AnimatedText>
           <div style={{ opacity: this.state.textEnded ? 1 : 0 }} className={css.interactions}>
-            <HoverableText imageKey="photo">Photography</HoverableText> , music, programmation & <HoverableText imageKey="cg">computer graphics</HoverableText>
+            <HoverableText imageKey="photo">Photography</HoverableText> , <HoverableText imageKey="cg">music</HoverableText>,
+            <HoverableText imageKey="cg">programmation</HoverableText> & <HoverableText imageKey="cg">computer graphics</HoverableText>, try to hover them!
           </div>
         </div>
         <div style={{ opacity: this.state.displayCTA ? 1 : 0 }} className={css.textCTA}>
