@@ -34,7 +34,7 @@ export default class InfiniteProjects extends Component {
 
     return (
       <div className={css.container}>
-        <h1>For now, you can look 👀 at some of my projects</h1>
+        <h1>You can also look 👀 at some of my projects</h1>
         <ul style={{ transform: `translate(${scroll}px, 0px)` }} ref="list" className={css.projectList}>
           {projects.map((project, key) => {
             return (

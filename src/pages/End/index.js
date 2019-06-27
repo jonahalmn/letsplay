@@ -59,7 +59,7 @@ export default class Experience extends Component {
           3 - We made it !
         </div>
         <div>
-          <AnimatedText delay={3500}>Now, you can listen.To the music we made together.I’m excited, it’s our first project together.Maybe we can</AnimatedText>
+          <AnimatedText delay={3100}>Now, you can listen.To the music we made together.I’m excited, it’s our first project together.Maybe we can</AnimatedText>
           <a className={css.link} style={{ opacity: this.state.textEnded ? 1 : 0 }} href="mailto:jonah.allemonne@icloud.com">
             create something else
           </a>
